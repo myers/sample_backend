@@ -24,4 +24,4 @@ class JobTrackAPITests(TestCase):
         )
         self.assertEqual(response.status_code, 204)
         job.refresh_from_db()
-        self.assertEqual("STARTED", Job.objects.status)
+        self.assertEqual("STARTED", job.status)
