@@ -1,7 +1,7 @@
 import json
 
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse, HttpResponseBadRequest
+from django.http import HttpResponse, HttpResponseBadRequest, JsonResponse
 
 from .models import Job
 
@@ -51,4 +51,5 @@ def job_callback_put(request, job_uuid):
 
 
 def job_status(request, job_uuid):
-    return HttpResponseBadRequest("TODO")
+    job = get_object_or_404(Job, uuid=job_uuid)
+    return JsonResponse({"status": job.status, "body": job.body, "detail": job.detail})

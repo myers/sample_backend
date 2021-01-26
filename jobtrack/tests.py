@@ -43,7 +43,7 @@ class JobTrackAPITests(TestCase):
         job = Job.objects.create(body=json.dumps({"body": "cheese gromit!"}))
         response = self.client.get(job.status_url())
         self.assertEqual(response.status_code, 200)
-        body = json.loads(response.body.decode("utf-8"))
+        body = json.loads(response.content)
         self.assertEqual(job.status, body["status"])
         self.assertEqual(job.detail, body["detail"])
         self.assertEqual(job.body, body["body"])
