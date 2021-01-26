@@ -25,3 +25,16 @@ class JobTrackAPITests(TestCase):
         self.assertEqual(response.status_code, 204)
         job.refresh_from_db()
         self.assertEqual("STARTED", job.status)
+
+    def test_job_callback_finished(self):
+        job = Job.objects.create(body=json.dumps({"body": "cheese gromit!"}))
+        status = "PROCESSED"
+        detail = "Your cheese is now ready"
+        body = {"status": status, "detail": detail}
+        response = self.client.put(
+            job.callback_url(), json.dumps(body), content_type="application/json"
+        )
+        self.assertEqual(response.status_code, 204)
+        job.refresh_from_db()
+        self.assertEqual(status, job.status)
+        self.assertEqual(detail, job.detail)
