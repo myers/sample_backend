@@ -58,7 +58,7 @@ $ curl http://127.0.0.1:8000/status/8c5d4c8f-60d0-41fb-ad37-9cea38a03118
 - All code should be formatted with [black]
 
 
-[brew]: (https://brew.sh/)
-[pyenv]: (https://github.com/pyenv/pyenv)
-[poetry]: (https://python-poetry.org/)
-[black]: (https://github.com/psf/black)
+[brew]: https://brew.sh/
+[pyenv]: https://github.com/pyenv/pyenv
+[poetry]: https://python-poetry.org/
+[black]: https://github.com/psf/black
