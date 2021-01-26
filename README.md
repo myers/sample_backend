@@ -40,6 +40,12 @@ bin/manage runserver
 
 TODO: give some curl examples here of interacting with the API
 
+## Code Standards
+
+- All code should be formatted with [black]
+
+
 [brew]: (https://brew.sh/)
 [pyenv]: (https://github.com/pyenv/pyenv)
 [poetry]: (https://python-poetry.org/)
+[black]: (https://github.com/psf/black)

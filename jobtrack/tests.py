@@ -5,6 +5,7 @@ from django.test import Client
 
 from .models import Job
 
+
 class JobTrackAPITests(TestCase):
     def test_submit_job(self):
         self.assertEqual(0, Job.objects.count())
