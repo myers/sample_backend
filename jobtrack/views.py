@@ -2,12 +2,14 @@ import json
 
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseBadRequest, JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 
 from .models import Job
 
 from .service_client import submit_job
 
 
+@csrf_exempt
 def add_job(request):
     if request.content_type != "application/json":
         return HttpResponseBadRequest("content must be of type application/json")
@@ -21,6 +23,7 @@ def add_job(request):
     return HttpResponse(job.uuid)
 
 
+@csrf_exempt
 def job_callback(request, job_uuid):
     if request.method == "POST":
         return job_callback_post(request, job_uuid)

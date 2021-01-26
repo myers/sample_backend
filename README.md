@@ -35,10 +35,23 @@ bin/manage test
 ## Running app
 
 ```
+bin/manage migrate
 bin/manage runserver
 ```
 
-TODO: give some curl examples here of interacting with the API
+## Interact with CURL
+
+```
+$ curl -d '{"body": "cheese gromit!"}' -H 'Content-Type: application/json' http://127.0.0.1:8000/request
+8c5d4c8f-60d0-41fb-ad37-9cea38a03118
+$ curl http://127.0.0.1:8000/status/8c5d4c8f-60d0-41fb-ad37-9cea38a03118
+{"status": "", "body": "{\"body\": \"cheese gromit!\"}", "detail": ""}
+$ curl -X POST -d 'STARTED' http://127.0.0.1:8000/callback/8c5d4c8f-60d0-41fb-ad37-9cea38a03118
+$ curl -X PUT -d '{"status": "ERROR", "detail": "Not cheesy enough"}' -H 'Content-Type: application/json' http://127.0.0.1:8000/callback/8c5d4c8f-60d0-41fb-ad37-9cea38a03118
+$ curl http://127.0.0.1:8000/status/8c5d4c8f-60d0-41fb-ad37-9cea38a03118
+{"status": "ERROR", "body": "{\"body\": \"cheese gromit!\"}", "detail": "Not cheesy enough"}
+```
+
 
 ## Code Standards
 
