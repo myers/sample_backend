@@ -1,6 +1,7 @@
+import json
+
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseBadRequest
-
 
 from .models import Job
 
@@ -39,4 +40,11 @@ def job_callback_post(request, job_uuid):
 
 
 def job_callback_put(request, job_uuid):
-    return HttpResponseBadRequest("not yet written")
+    job = get_object_or_404(Job, uuid=job_uuid)
+    body = json.loads(request.body.decode("utf-8"))
+    assert body.get("status") in ["PROCESSED", "COMPLETED", "ERROR"]
+    job.status = body.get("status")
+    job.detail = body.get("detail")
+    job.save()
+
+    return HttpResponse(status=204)
