@@ -25,3 +25,6 @@ class Job(models.Model):
 
     def callback_url(self):
         return reverse("job-callback", kwargs=dict(job_uuid=self.uuid))
+
+    def status_url(self):
+        return reverse("job-status", kwargs=dict(job_uuid=self.uuid))

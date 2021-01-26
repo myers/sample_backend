@@ -5,4 +5,5 @@ from . import views
 urlpatterns = [
     path("request", views.add_job, name="add-job"),
     path("callback/<uuid:job_uuid>", views.job_callback, name="job-callback"),
+    path("status/<uuid:job_uuid>", views.job_status, name="job-status"),
 ]

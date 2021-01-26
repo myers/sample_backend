@@ -48,3 +48,7 @@ def job_callback_put(request, job_uuid):
     job.save()
 
     return HttpResponse(status=204)
+
+
+def job_status(request, job_uuid):
+    return HttpResponseBadRequest("TODO")

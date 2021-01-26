@@ -38,3 +38,12 @@ class JobTrackAPITests(TestCase):
         job.refresh_from_db()
         self.assertEqual(status, job.status)
         self.assertEqual(detail, job.detail)
+
+    def test_job_detail(self):
+        job = Job.objects.create(body=json.dumps({"body": "cheese gromit!"}))
+        response = self.client.get(job.status_url())
+        self.assertEqual(response.status_code, 200)
+        body = json.loads(response.body.decode("utf-8"))
+        self.assertEqual(job.status, body["status"])
+        self.assertEqual(job.detail, body["detail"])
+        self.assertEqual(job.body, body["body"])
