@@ -7,6 +7,7 @@ authors = ["Myers Carpenter <myers@maski.org>"]
 [tool.poetry.dependencies]
 python = "^3.9"
 Django = "^3.1.5"
+requests = "^2.25.1"
 
 [tool.poetry.dev-dependencies]
 black = "^20.8b1"
