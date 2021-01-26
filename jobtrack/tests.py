@@ -16,6 +16,8 @@ class JobTrackAPITests(TestCase):
         )
         self.assertEqual(response.status_code, 200)
         self.assertEqual(1, Job.objects.count())
+        job = Job.objects.first()
+        self.assertEqual("cheese gromit!", job.body)
 
     def test_job_callback_started(self):
         job = Job.objects.create(body=json.dumps({"body": "cheese gromit!"}))

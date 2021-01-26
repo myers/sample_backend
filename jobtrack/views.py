@@ -15,7 +15,8 @@ def add_job(request):
         return HttpResponseBadRequest("content must be of type application/json")
     # should test body is vaild utf-8
     # should test body content is valid JSON
-    job = Job.objects.create(body=request.body.decode("utf-8"))
+    doc = json.loads(request.body.decode("utf-8"))
+    job = Job.objects.create(body=doc["body"])
 
     job_callback = request.build_absolute_uri(job.callback_url())
     # if we encounter an error posting this to the service this request will raise an exception and because we have ATOMIC_REQUESTS set in the settings the transaction we are in will rollback.  It would be a good idea for us to pass on error messages from the service to our clients, using 502 http status codes.  Also might consider using a service like Sentry or BugSnag and report an error via that service for better ops visibilty into errors from the service.
