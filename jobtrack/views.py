@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseBadRequest
 
 from .models import Job
@@ -29,7 +29,12 @@ def job_callback(request, job_uuid):
 
 
 def job_callback_post(request, job_uuid):
-    return HttpResponseBadRequest("not yet written")
+    request_body = request.body.decode("utf-8")
+    assert request_body == "STARTED", f"{request_body!r}"
+    job = get_object_or_404(Job, uuid=job_uuid)
+    job.status = request_body
+    job.save()
+    return HttpResponse(status=204)
 
 
 def job_callback_put(request, job_uuid):
