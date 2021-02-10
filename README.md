@@ -1,13 +1,13 @@
-# Myers Carpenter's CrowdStreet Backend Take Home Exercise
+# Myers Carpenter's Sample Backend Take Home Exercise
 
-Implements a small API for interacting with a callback based third-party service.
+Implements a small API for interacting with a callback based third-party service.  See [REQUIREMENTS.md].
 
 ## Setup
 
 1. Clone repo
     ```
-    git clone https://github.com/myers/crowdstreet_backend.git
-    cd crowdstreet_backend
+    git clone https://github.com/myers/sample_backend.git
+    cd sample_backend
     ```
 1. Install [pyenv].  On macOS with brew you can install via
     ```

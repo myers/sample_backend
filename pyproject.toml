@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "crowdstreet_backend"
+name = "sample_backend"
 version = "0.1.0"
 description = ""
 authors = ["Myers Carpenter <myers@maski.org>"]
