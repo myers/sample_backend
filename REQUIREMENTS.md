@@ -16,7 +16,9 @@ application is expected to have four endpoints.  These may be implemented as
 a stateful service, or multiple stateless services/functions connected to a
 store.  The state must be stored somewhere (if in memory, please note how to
 store at rest).  Each should respond to an http request and follow the REST
-conventions for methods.  The endpoints should meet the following
+conventions for methods.  
+
+The endpoints should meet the following
 requirements: 
 
 
